@@ -18,7 +18,7 @@ public class PrimitiveServlet implements Servlet {
                 "Content-Type: text/html\r\n" +
                 "Content-Length: "+s.length()+"\r\n" +
                 "\r\n");
-        out.println(s);
+        out.print(s);
     }
 
     public void destroy() {
