@@ -8,6 +8,7 @@ import org.apache.catalina.connector.http.HttpConnector;
 import org.apache.catalina.core.StandardContext;
 import org.apache.catalina.loader.WebappClassLoader;
 import org.apache.catalina.loader.WebappLoader;
+import org.apache.catalina.session.StandardManager;
 
 public class Bootstrap {
 
@@ -15,11 +16,8 @@ public class Bootstrap {
         System.setProperty("catalina.base",System.getProperty("user.dir"));
         Connector connector = new HttpConnector();
         Wrapper wrapper1 = new SimpleWrapper();
-        wrapper1.setName("Primitive");
-        wrapper1.setServletClass("PrimitiveServlet");
-        Wrapper wrapper2 = new SimpleWrapper();
-        wrapper2.setName("Modern");
-        wrapper2.setServletClass("ModernServlet");
+        wrapper1.setName("Session");
+        wrapper1.setServletClass("SessionServlet");
 
         Context context = new StandardContext();
         //Context context = new SimpleContext();
@@ -28,10 +26,9 @@ public class Bootstrap {
         context.setDocBase("myApp");
 
         context.addChild(wrapper1);
-        context.addChild(wrapper2);
 
-        context.addServletMapping("/Primitive", "Primitive");
-        context.addServletMapping("/Modern", "Modern");
+        context.addServletMapping("/myApp/Session", "Session");
+        context.addServletMapping("/Session", "Session");
 
         LifecycleListener listener = new SimpleContextConfig();
         ((Lifecycle) context).addLifecycleListener(listener);
@@ -42,6 +39,9 @@ public class Bootstrap {
         context.setLoader(loader);
 
         connector.setContainer(context);
+
+        Manager manager = new StandardManager();
+        context.setManager(manager);
 
         try {
             connector.initialize();
