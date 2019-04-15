@@ -1,7 +1,0 @@
-本章的代码其实和上一章一样，原因如下：
-1、书中本章使用的Context是Catalina的StandardContext，由于StandardContext
-引用了org.apache.naming包，这个包在Maven中无法引入；而我尝试将这个包的源码
-直接添加到项目中，但源码年代久远，在jdk 1.8环境无法编译。即本章还是使用了简
-单的SimpleContext。
-2、书中使用的Loader是Catalina的WebappLoader，原因同上无法使用，因此还是使用
-简单的SimpleLoader。
