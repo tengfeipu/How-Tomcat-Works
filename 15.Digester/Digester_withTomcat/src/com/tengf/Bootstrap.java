@@ -1,4 +1,4 @@
-package com.tengf.digestertest.com.tengf;
+package com.tengf;
 
 import org.apache.catalina.*;
 import org.apache.catalina.connector.http.HttpConnector;
