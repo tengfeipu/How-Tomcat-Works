@@ -1,6 +1,6 @@
 # How-Tomcat-Works
 
-本仓库的代码源于《How TomcatWorks》（《深入剖析Tomcat》）
+本仓库的代码源于《How Tomcat Works》（《深入剖析Tomcat》）
 
 ## Why
 书中的代码年代较为久远，不能直接在当前的环境下运行。  
